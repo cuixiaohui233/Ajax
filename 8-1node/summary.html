@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>概述</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		Ajax:
+			Asynchronous Javascript And XML
+			
+			XML:
+				数据格式
+				<person>
+					<name></name>
+					<age></age>
+				</person>
+				以前都用这种数据格式
+				
+			注意：
+				!!!!!不管什么格式，后端返回的都是字符串!!!!!
+				
+			Ajax概念：
+				一种前端与后台数据交互的一种方式
+				
+			优点：
+				1.减少服务器的压力
+				2.优化用户体验，不用刷新就可以更新数据
+				3.使用异步操作与服务器通信不需要打断用户的操作，具有更加迅速的响应能力
+			运行：
+				不能再本地运行，要在服务器上运行
+				
+			***ajax难点***：
+			拿到数据之后，如何操作数据。
+			get:
+		*/
+			const ajax = new XMLHttpRequest;
+			
+			ajax.open('get','php/get.php,user='+input.value);
+			
+			ajax.send();
+			
+			ajax.onload = function(){
+				span.innerHTML = ajax.responseType;
+			}
+		/*
+			post 
+		*/
+		const ajax = new XMLHttpRequest;
+		
+		ajax.post('post','php/post.php');
+		
+		ajax.open();
+		//请求头
+		ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		
+		ajax.send('user='+input.value);
+		
+		ajax.onload = function(){
+			span.innerHTML = ajax.responseText;
+		}
+		
+		/*
+			jQuery版的
+			1.先引入那个jQ文件
+			2.
+		*/
+		.ajax({
+			url:'php/get.php',
+			data:{
+				pname:$('#input').val()
+			},
+			success:{
+				$('span').text(data)//这个data就是后台返回的数据
+			}
+		})
+		/*
+		get和post的区别：
+			get:通过url来发送数据给后端
+				相对来说不安全
+				体积受浏览限制
+				不用设置请求头
+			post:
+				通过send发送数据给后端
+				安全性好
+				体积不受浏览器限制
+				需要加请求头
+		*/
+		/*
+		IE浏览器的url码
+			IE浏览器的解析器会把中文解析成url码，这样，只要出现value，就要用encodeURI(value)包一下；
+			用post的方法，请求头里会转的
+		*/
+	</script>
+</body>
+</html>
