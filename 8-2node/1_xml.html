@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>xml</title>
+</head>
+<body>
+	<input type="text" id="txt" />
+	<ul id="ul"></ul>
+	<script type="text/javascript">
+		var txt = document.getElementById('txt');
+		var ul = document.getElementById('ul');
+		txt.onblur =function(){
+			const ajax = new XMLHttpRequest();
+			ajax.open('get','php/data.xml?user='+txt.value);
+			ajax.send();
+			ajax.onload = function(){
+				const data = ajax.responseXML;
+				console.log(data);
+				let person = data.getElementsByTagName('person');
+//				console.log(person)
+				person = Array.from(person);
+//				console.log(person)
+				var str = '';
+				person.forEach(function(e){
+					let name = e.getElementsByTagName('name')[0];
+					let age = e.getElementsByTagName('age')[0];
+					let sex = e.getElementsByTagName('sex')[0];
+					let info = e.getElementsByTagName('info')[0];
+					str += '<li>我的名字是'+name.innerHTML+'我是个'+sex.innerHTML+'孩子,我今年芳龄'+age.innerHTML+'今天我想说'+info.innerHTML+'</li>';
+				})
+				ul.innerHTML = str;
+			}
+		}
+	</script>
+</body>
+</html>

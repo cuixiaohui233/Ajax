@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>自己封装的阿贾克斯</title>
+</head>
+<body>
+	<input type="text" id="txt" /><span id="span"></span>
+	<script type="text/javascript" src="ajax.1.0.js"></script>
+	<script type="text/javascript">
+		var txt = document.getElementById('txt');
+		txt.onblur = function(){
+			ajax({
+				url:'php/get_json.php',
+				data:{
+					user:txt.value
+				},
+				dataType:'json',
+				method:'get',
+				success:function(data){
+//					console.log(data);
+					span.innerHTML = data.msg;
+				},
+				error:function(data){
+					alert(data.status+'   页面挂啦！！！');
+				}
+			})
+		}
+		
+	</script>
+</body>
+</html>
