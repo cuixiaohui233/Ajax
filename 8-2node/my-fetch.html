@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt" /><span id="span"></span>
+	<script type="text/javascript" src="ajax.promise1.0.js"></script>
+	<script type="text/javascript">
+		var txt = document.getElementById('txt');
+	
+		txt.onblur = function(){
+			var fetch = ajax({
+				url:'php/get_json.php',
+				data:{
+					user:txt.value
+				},
+				dataType:'json'
+			})
+			
+			fetch.then(function(data){
+				span.innerHTML = data;
+			}).catch(function(data2){
+				span.innerHTML = data2;
+			})
+		}		
+	</script>
+</body>
+</html>
