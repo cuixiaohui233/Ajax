@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" name="txt" id="txt" value="" />
+	<script type="text/javascript" src="my-jsonp-1.0.js"></script>
+	<script type="text/javascript">
+		const txt = document.getElementById('txt');
+		txt.onblur = function(){
+			jsonp({
+				dataType:'jsonp',
+				url:'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+				data:{
+					wd:txt.value
+				},
+				success:function(data){
+					console.log(data);
+				}
+			})
+		}
+		
+	</script>
+	
+</body>
+</html>
