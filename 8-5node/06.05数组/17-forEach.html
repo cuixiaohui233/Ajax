@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			li{
+				height: 30px;
+				margin-bottom: 5px;
+			}
+			div{
+				border: 1px solid #000;
+				width: 50px;
+				height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<div></div>
+		<div></div>
+		<div></div>
+		<script type="text/javascript">
+			var lis = document.getElementsByTagName('li');
+			var divs = document.getElementsByTagName('div');
+			//把lis类数组转成数组，就可以用数组的方法了
+			var arr = Array.from(lis);
+			//相当于for给lis[i]加点击事件
+			arr.forEach(function(a,b,c){
+				a.onclick = function(){
+					//alert(1);
+					//相当于大清洗,c是lis
+					c.forEach(function(a,b){
+						a.style.background = '';
+						divs[b].style.background = '';
+						
+					})
+					//给当前变红，b相当于this.index
+					this.style.background = 'red';
+					divs[b].style.background = 'red';
+				}
+			})
+			
+		</script>
+	</body>
+</html>

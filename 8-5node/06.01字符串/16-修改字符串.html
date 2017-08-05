@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			span{
+				background: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		aaaaaaabaaaaaaaaaaabaaaaaaab
+		<script type="text/javascript">
+//			var str = 'aaaabaaaabaaaabaaab';
+//			//b要被替换的，c替换成的
+//			console.log(str.split('b').join('c'))	
+//			console.log(str)
+
+		var txt = document.body.innerText;
+		document.body.innerHTML=txt.split('b').join('<span>b</span>')
+		console.log(txt)
+		</script>
+	</body>
+</html>

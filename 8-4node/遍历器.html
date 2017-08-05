@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>遍历器</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var obj = {
+			name:'nizp',
+			age:18,
+			sex:'男',
+			say:'厉害到爆炸！'
+		}
+		var arr  = Object.keys(obj);
+		var len = arr.length;
+		var i = 0;
+		console.log(len);
+		obj[Symbol.iterator] = function (){
+			return {
+				next(){
+					if(i < len){
+						return {
+							value:{
+								key:arr[i],
+								val:obj[arr[i++]]
+							},
+							done:false
+						}
+					}else{
+						return {
+							value:null,
+							done:true
+						}
+					}	
+				}
+			}
+		}
+		
+		for(var {key,val} of obj){
+			console.log(i,val)
+		}
+	</script>
+</body>
+</html>

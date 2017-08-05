@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 	string.substring(start,[end])
+			 	作用：
+			 		截取指定范围的字符片段
+			 	参数：
+			 		start:起始位置
+			 		[end]:可选，终止位置，默认最后一位
+			 *  返回值：string
+			 		1.不传参数，返回完整字符串
+			 *      2.截取到，返回截取到的字符串
+			 * 		3.没截取到，返回空字符串
+			 * 		4.负数转成0
+			 *      5.截取后不改变原字符串，返回的是新字符串
+			 *      6.end<start，会自动换过来
+			 *      7.不包含结束位置
+			 *      8.结束位置-起始位置=截取个数
+			 * 7、8哪种理解都可以
+			 * */
+			var str = 'miaov';
+//			console.log(str.substring())
+//			console.log(str.substring(10))
+//			console.log(str.substring(1,2))
+//			console.log(str.substring(-1))
+			console.log(str.substring(-1,6))
+			console.log(typeof undefined)
+			console.log(undefined == 'undefined');
+		</script>
+	</body>
+</html>

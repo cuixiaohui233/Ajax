@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 	array.sort([fn])
+			 	作用：
+			 		数组每项排序
+			 	参数:
+			 		[fn]:处理函数，根据return后边的结果，>0,<0
+			 	返回值：array
+			 		1.排序后的原数组
+			 		2.不传参数，按字符的ASCII码的大小排序
+			 		3.传入处理函数，根据return的结果排序
+			 	//从小到大
+				return a-b;	
+			 		
+			 	//从大到小
+				return b-a;
+				
+				//随机
+			return Math.random()-0.5
+			 * 
+			 * */
+//			var arr = [1,3,2,4,20];
+//			var arr1 = arr.sort();
+//			arr.push(5)
+//			console.log(arr)
+//			console.log(arr1)
+			
+			
+			var arr = [1,3,2,4,20];
+			arr.sort(function(a,b){
+				//从小到大
+				//return a-b;
+				//从大到小
+				//return b-a;
+				//随机
+				return Math.random()-0.5
+			})
+			console.log(arr)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 	array.fill(val,[start],[end])
+			 	作用：
+			 		数组里的项用指定值填充
+			 	参数：
+			 		val：要变成的值
+			 		[start]：起始位置，可选，默认是0
+			 		[end]:结束位置，可选，默认是最后一位
+			 	返回值：array
+			 		返回填充后的原数组
+			 * 
+			 * */
+			var arr = [1,2,3,4];
+			var arr1 = arr.fill(7,1,2);
+			arr.push(5)
+			console.log(arr)
+			console.log(arr1)
+		</script>
+	</body>
+</html>

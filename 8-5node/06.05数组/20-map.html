@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 arr.map(fn,[this])
+			 * 作用：
+			 * 		每次循环return后的执行结果成为每项，返回新数组
+			 * 参数：
+			 * 		fn：处理函数
+			 *     [this]:可选，处理函数的this指向
+			 * 
+			 * function(value,index,arr){}
+			 * value:数组每项值
+			 * index:索引
+			 * arr:数组
+			 * 
+			 * return  执行语句
+			 * 
+			 * */
+			var arr = [1,2,3,4];
+			var arr1 = arr.map(function(a){
+				return a*2
+			})
+			console.log(arr)
+			console.log(arr1)
+		</script>
+	</body>
+</html>

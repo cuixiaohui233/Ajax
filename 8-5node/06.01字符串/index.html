@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="box">
+			<ul class = "abc ">
+				<li class="abc"></li>
+				<li class="abc"></li>
+				<li class="abc"></li>
+			</ul>
+		</div>
+		
+		<ul id='ul'>
+			<li class="abc"></li>
+			<li class="abc"></li>
+			<li class="abc"></li>
+		</ul>
+		<script type="text/javascript">
+			//单词首字母变大写
+			// var str = 'are you ok';
+			// var arr = str.split(' ');
+			// for(var i=0,len=arr.length;i<len;i++){
+			// 		arr[i] = arr[i][0].toUpperCase()+arr[i].slice(1);
+			// }
+			// console.log(arr.join(' '))
+
+
+			//获取ID、class、标签名
+			function getEl(str,target){
+				var t = str.substr(0,1);
+				var s = str.substr(1);
+				target = target || document;
+				if(t=="#"){
+					return  document.getElementById(s);
+				}else if(t=='.'){
+					return target.getElementsByClassName(s);
+				}else{
+					return target.getElementsByTagName(str);
+				}
+			}
+			// //console.log(getEl('#box'));
+			// //console.log(getEl('.abc'));
+			// //console.log(getEl('ul'));
+			// console.log(getEl('ul',getEl('#box')));
+
+
+			//给元素添加class
+			// function addClass(obj,name){
+			// 	var s = obj.className;
+			// 	if(s == ''){
+			// 		obj.className = name;
+			// 	}else{
+			// 		var arr = s.split(' ');
+			// 		for(var i =0,len=arr.length;i<len;i++){
+			// 			if(arr[i] == name){
+			// 				return;
+			// 			}
+			// 			obj.className += ' '+name;
+			// 		}
+			// 	}
+			// }
+			
+		</script>
+	</body>
+</html>

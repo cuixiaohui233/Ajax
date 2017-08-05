@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str = 'abc';
+			str.length = 10;//不能设置字符串的length,只能获取
+			console.log(str.length)
+			str[0] = 'd';
+			//修改字符串只能整体销毁，赋值新字符串，不能只修改其中的某一位字符
+			console.log(str)
+		</script>
+	</body>
+</html>

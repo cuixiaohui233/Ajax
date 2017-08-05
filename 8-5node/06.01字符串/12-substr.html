@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		/*
+		 	string.substr(start,[length])
+		 	作用：
+		 		截取指定范围的字符片段
+		 	参数：
+		 		start:起始位置
+		 		[length]:截取个数，默认截取到最后一位
+		 *  返回值：string
+		 		1.不传参数，返回完整字符串
+		 *      2.截取到，返回截取到的字符串
+		 * 		3.没截取到，返回空字符串
+		 * 		4.负数，字符串长度+负数
+		 *      5.截取后不改变原字符串，返回的是新字符串
+		 * */
+		var str = 'miaov';
+//		console.log(str.substr())
+//		console.log(str.substr(10))
+		console.log(str.substr(-3,3))
+		console.log(str.substr(2,2))
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 	array.slice(start,[end])
+			 	作用：
+			 		截取数组中的一段数据放新数组里返回
+			 	参数：
+			 		start：起始位置
+			 		[end]:终止位置，可选，默认到最后一位
+			 	返回值：array
+			 	   1.不传参数，返回完整新数组
+			 	   2.截取起始位置到终止位置的数据，不包含终止位置，放新数组里返回
+			 	   3.负数，长度+负数
+			 	   4.没截到，返回空数组
+			 * 
+			 * */
+			var arr = [1,2,3,4];
+			console.log(arr.slice(5))
+			console.log(arr)
+			console.log(arr.slice(1))
+			console.log(arr.slice(-1))
+			console.log(arr.slice())
+		</script>
+	</body>
+</html>

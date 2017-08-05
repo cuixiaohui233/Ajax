@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 	for of
+			 		ES6,专门遍历数组用的
+			 		只遍历数组内，数组上的自定义属性和原型上的属性不会被遍历
+			 	
+			 	
+			 	for in专门遍历对象{}
+			 	for of专门遍历数组
+			 * 
+			 * */
+			var arr = ['a',2,3,4];
+			//自定义属性
+			arr.name = 'a';
+			//原型
+			Array.prototype.age = 18;
+//			for(var k in arr){
+				//k是字符串的下标，不能直接几何运算
+//				console.log(k)
+//			}
+			for(var k of arr){
+				//k是数组项
+				console.log(k)
+			}
+		</script>
+	</body>
+</html>

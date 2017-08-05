@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 	array.concat(val1,val2...)
+			 * 作用：
+			 * 		原数组和传入值放新数组里返回，连接2个数组
+			 * 参数：
+			 * 	val1,val2:添加的数据，多个之间用逗号
+			 * 返回值：array
+			 * 		1.原数组和新传入的值放到新数组里返回
+			 *      2.不改变原数组
+			 *      3.如果传入的是数组，会把原数组每项和传入数组的每项放到新数组里返回
+			 * */
+			var arr = [1,2,3,4];
+			console.log(arr.concat(5,6))
+			console.log(arr)
+			console.log(arr.concat([5,[6,7]]))
+		</script>
+	</body>
+</html>

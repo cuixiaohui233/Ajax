@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+		body{
+			background: #f1f1f1;
+			margin:0;
+		}
+		ul{
+			width:1110px;
+			overflow: hidden;
+			margin:0;
+		}
+		li{
+			width:250px;
+			float:left;
+			margin:10px;
+			list-style: none;
+			/*background: red;*/
+			/*border:1px solid #000;*/
+		}
+		.pic{
+        width: 236px;
+        box-shadow:0 1px 3px rgba(0,0,0,.3);
+        overflow:hidden;
+        margin-top:10px;
+        border:1px solid #000;
+      }
+	</style>
+</head>
+<body>
+	<ul id="list">	
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<script type="text/javascript" src="jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		let num = 0;
+		let page = 0;
+		jianzai();
+		function jianzai(){
+			$.ajax({
+				url:'http://www.wookmark.com/api/json/popular?page='+page+'&callback=?',
+				dataType:'jsonp',
+				success:function(data){
+//					console.log(data);
+					$.each(data,function(i,e){
+//						console.log(i)//图片
+						const div = $('<div class="pic"></div>');
+						const img = $(`<img src="${e.preview}"/>`);
+						img[0].onload = function(){
+							let index = findMin();
+							div.append(img);
+							$('li').eq(index).append(div);
+						}
+					});
+				}
+			});
+//			num = 0;
+		}
+		
+		window.onscroll = function(){
+			let maxH = document.documentElement.clientWidth;
+			let scro = 	document.body.scrollTop ;
+			console.log(scro);
+//			if(pageYOffset >= scro ){
+//				page++;
+//				jianzai();
+//			}
+			console.log(pageYOffset)
+		}
+		//找到最短的li
+//		console.log(findMin());
+		function findMin(){
+			let lis = $('li');
+//			console.log(lis);
+			var arr = [];
+			$.each(lis, function(i,e) {
+//				console.log(app)
+				arr.push(e.scrollHeight);
+			});
+			let num = Math.min.apply(null,arr);
+			return arr.findIndex(e=>e == num)//
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 arr.filter(fn,[this])
+			 * 作用：
+			 * 		满足条件的项放到新数组里返回，没有满足项返回空数组
+			 * 参数：
+			 * 		fn：处理函数
+			 *     [this]:可选，处理函数的this指向
+			 * 
+			 * function(value,index,arr){}
+			 * value:数组每项值
+			 * index:索引
+			 * arr:数组
+			 * 
+			 * return  判断条件
+			 * 
+			 * */
+			var arr = [1,2,3,4];
+			var arr1 = arr.filter(function(a){
+				return a>5
+			})
+			console.log(arr);
+			console.log(arr1);
+		</script>
+	</body>
+</html>

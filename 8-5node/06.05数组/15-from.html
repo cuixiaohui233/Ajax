@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<script type="text/javascript">
+			/*
+			 * Array.from(arr)
+			 * 作用：	
+			 	 ES6，把类数组，或者有length的对象转成真正的数组 
+			 * 参数：
+			 * 	  arr:类数组，或者有length对象，类数组：arguments，获取元素tag,class
+			 * */
+			var lis = document.getElementsByTagName('li');
+			var arr = Array.from(lis);
+			arr.push(1);
+			console.log(arr)
+			
+			var obj = {
+				'0':'a',
+				'1':'b',
+				length:2
+			}
+			var j = Array.from(obj);
+			j.push(1)
+			console.log(j)
+		</script>
+	</body>
+</html>

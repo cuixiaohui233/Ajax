@@ -6,18 +6,31 @@
 </head>
 <body>
 	<input type="text" name="txt" id="txt" value="" />
+	<ul id="ul">
+		
+	</ul>
 	<script type="text/javascript" src="my-jsonp-1.0.js"></script>
 	<script type="text/javascript">
 		const txt = document.getElementById('txt');
-		txt.onblur = function(){
+		const ul = document.getElementById('ul');
+		txt.onkeyup = function(){
 			jsonp({
 				dataType:'jsonp',
 				url:'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
 				data:{
 					wd:txt.value
 				},
+				cd:'cb',
 				success:function(data){
-					console.log(data);
+//					console.log(data);
+					var str = '';
+					data.s.forEach(function(e,i){
+						if(i < 5){
+							str += `<li>${e}</li>`
+						}						
+					})	
+					console.log(str);
+					ul.innerHTML = str;
 				}
 			})
 		}

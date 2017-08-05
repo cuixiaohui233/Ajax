@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+
+</head>
+
+<body>
+	<input type="text" name="txt" id="txt" value="" />
+	<input type="text" name="txt" id="txt1" value="" />
+	<!--<input type="text" name="txt" id="txt2" value="" />-->
+	<button id="btn">按钮</button>
+	<ul id="ul">
+		
+	</ul>
+<script src="my-jsonp-1.0.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var txt = document.getElementById('txt');
+	var txt1 = document.getElementById('txt1');
+//	var txt2 = document.getElementById('txt2');
+	var btn = document.getElementById('btn');
+	
+	//listjson?&rn=30&ie=utf8&?tag1=明星&tag2=美女&pn=1
+	//http://image.baidu.com/channel/listjson?&rn=30&ie=utf8&tag1=明星&tag2=美女&pn=0
+	btn.onclick = function(){
+		
+		jsonp({
+			dataType:'jsonp',
+			url:'http://image.baidu.com/channel/listjson?&rn=30&ie=utf8&',
+			data:{
+				tag1:txt.value,
+				tag2:txt1.value,
+				pn:0
+			},
+			success:function(data){
+				console.log(data);
+//				var str = '';
+//				data.s.forEach(function(e,i){
+//					if(i < 5){
+//						str += `<li>${e}</li>`
+//					}						
+//				})	
+//				console.log(str);
+//				ul.innerHTML = str;
+			}
+		})
+	}
+	
+
+	
+</script>
+
+</body>
+</html>

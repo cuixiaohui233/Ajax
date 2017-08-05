@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 	array 数组
+			 		存储0个或多个数据，有序性，多个数据间用逗号分隔
+			 	创建数组方式	
+			 	1.字面量
+			 		var arr = [];
+			 	2.对象
+			 		var arr = new Array(数据1,数据2...)
+			 		如果括号里只有一个数据，并且是数字，代表设置数组的长度,而不是放入一个数字类型的数据
+			 	3.Array.of(),ES6
+			 	为了解决方法2只有一个数据，并且是数字代表设置数组长度，ES6添加了一个方法Array.of()，传入一个数字，就是把数字放到数组内，而不是设置长度了
+			 		
+			 * length
+			 * 	 设置数组长度时，会修改数据个数，但是不推荐用length删除数据
+			 * */
+			var arr = [1,2,3,4,5];
+			//var arr1 = new Array(1,2,3)
+			var arr1 = new Array(3)
+			console.log(arr1)
+			var arr2 = Array.of(3)
+			console.log(arr2)
+			
+			arr.length = 2;
+			console.log(arr)
+			
+		</script>
+	</body>
+</html>
