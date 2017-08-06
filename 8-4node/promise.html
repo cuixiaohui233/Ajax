@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var fetch = new Promise(function(success,fail){
+			let a = 10;
+			if(a){
+				success(a);
+			}else{
+				fail('失败');
+			}
+		})
+		
+		fetch.then(function(a){
+			console.log(a);
+		}).catch(function(error){
+			console.log(error)
+		})
+	
+	</script>
+</body>
+</html>

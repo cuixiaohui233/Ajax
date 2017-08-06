@@ -41,38 +41,61 @@
 	<script type="text/javascript">
 		let num = 0;
 		let page = 0;
-		jianzai();
-		function jianzai(){
-			$.ajax({
-				url:'http://www.wookmark.com/api/json/popular?page='+page+'&callback=?',
-				dataType:'jsonp',
-				success:function(data){
+		$.ajax({
+			url:'http://www.wookmark.com/api/json/popular?page='+page+'&callback=?',
+			dataType:'jsonp',
+			success:function(data){
 //					console.log(data);
-					$.each(data,function(i,e){
+				$.each(data,function(i,e){
 //						console.log(i)//图片
-						const div = $('<div class="pic"></div>');
-						const img = $(`<img src="${e.preview}"/>`);
-						img[0].onload = function(){
-							let index = findMin();
-							div.append(img);
-							$('li').eq(index).append(div);
-						}
-					});
-				}
-			});
-//			num = 0;
-		}
+					const div = $('<div class="pic"></div>');
+					const img = $(`<img src="${e.preview}"/>`);
+					img[0].onload = function(){
+						let index = findMin();
+						div.append(img);
+						$('li').eq(index).append(div);
+					}
+				});
+			}
+		});
 		
 		window.onscroll = function(){
-			let maxH = document.documentElement.clientWidth;
-			let scro = 	document.body.scrollTop ;
-			console.log(scro);
-//			if(pageYOffset >= scro ){
-//				page++;
-//				jianzai();
-//			}
-			console.log(pageYOffset)
+			console.log(minHeight(),document.documentElement.clientHeight);
+			if(minHeight()<document.documentElement.clientHeight){
+				console.log(1);
+//				page= page+1;
+//				$.ajax({
+//					url:'http://www.wookmark.com/api/json/popular?page=1&callback=?',
+//					dataType:'jsonp',
+//					success:function(data){
+//		//					console.log(data);
+//						$.each(data,function(i,e){
+//		//						console.log(i)//图片
+//							const div = $('<div class="pic"></div>');
+//							const img = $(`<img src="${e.preview}"/>`);
+//							img[0].onload = function(){
+//								let index = findMin();
+//								div.append(img);
+//								$('li').eq(index).append(div);
+//							}
+//						});
+//					}
+//				});
+			}
 		}
+		
+		//找到可视区最短的li
+		function minHeight(){
+			var lis = $('li');
+			var arr1 = [];
+			$.each(lis,function(i,e){
+				arr1.push(e.getBoundingClientRect().bottom);				
+			})
+			let num1 = Math.min.apply(null,arr1);
+//			console.log(num1);
+			return num1//
+		}
+		
 		//找到最短的li
 //		console.log(findMin());
 		function findMin(){
