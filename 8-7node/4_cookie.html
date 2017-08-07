@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			cookie:
+				cookie只能在服务器上运行
+				cookie能将当前域名下的数据版存到浏览器中
+				
+				写操作：
+					document.cookie = key=val;
+					
+				简单的读操作：
+					console.log(document.cookie);
+					
+				cookie的生命周期：
+					默认情况：
+						在浏览器关闭之时
+					可以设置：
+						document.cookie = key=val;expires=设置时间
+		*/
+		
+		//设置cookie
+		function setcookie(val,key,time){
+			if(name){
+				var date = new Date();
+				date.setDate(date.getDate()+ time);
+				document.cookie = key +'='+val+';expires='+time;
+			}else{
+				document.cookie = key+'='+val;
+			}
+		}
+		//获取cookie
+		/*
+			获取的时候，一次性能获取到当前域名下的所有cookie
+			每个cookie是用; 来分割的（*分号空格*） 
+		*/
+		function getcookie(key){
+			let str = document.cookie;
+			let arr = str.split('; ');
+			var val = null;
+			for(var i=0;i<arr.length;i++){
+				var arr2 = arr[i].split('=');
+				if(arr2[0] == key){
+					val = arr2[1];
+					break;
+				}
+			}
+			if(val){
+				return val; 
+			}else{
+				return -1;
+			}
+		}
+		//删除,其实就是设置成小于当前的时间
+		function remove(val,key){
+			set(val,key,-1);
+		}
+	</script>
+</body>
+</html>

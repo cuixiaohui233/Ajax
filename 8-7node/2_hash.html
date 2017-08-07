@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+		ul{
+			width:224px;
+			height: 200px;
+		}
+		ul,li{
+			list-style: none;
+			margin:0;
+			padding:0;
+		}
+		li{
+			width:100px;
+			height:30px;
+			text-align: center;
+			line-height: 30px;
+			border:1px solid #000;
+			margin-right:10px;
+			float: left;
+		}
+		#box{
+			width:200px;
+			height: 200px;
+			border:1px solid #000;
+			position: absolute;
+			top:100px;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li id="prev">上一页</li>
+		<li id="next">下一页</li>
+		<div id="box"></div>
+	</ul>
+	<script type="text/javascript">
+		var prev = document.getElementById('prev');
+		var next = document.getElementById('next');
+		var num = 0;
+		var arr = ['pink','blue','red','green'];
+		//获取hash
+		if(location.hash){
+			num = location.hash.split('=')[1];
+		}else{
+			location.hash = 'page=0';
+		}
+		//点击设置hash
+		next.onclick = function(){
+			console.log(1);
+			num++;
+			if(num>3){
+				num = 3;
+			}
+			location.hash = 'page='+num;
+		}
+		prev.onclick = function(){
+			console.log(1);
+			num--;
+			if(num < 0){
+				num  = 0;
+			}
+			location.hash = 'page='+num;
+		}
+		box.style.background = arr[0];
+		//hash改变后的状态
+		window.onhashchange = function(){
+			box.style.background = arr[num];
+		}
+	</script>
+</body>
+</html>

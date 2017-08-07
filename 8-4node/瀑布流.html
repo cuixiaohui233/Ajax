@@ -41,46 +41,38 @@
 	<script type="text/javascript">
 		let num = 0;
 		let page = 0;
-		$.ajax({
-			url:'http://www.wookmark.com/api/json/popular?page='+page+'&callback=?',
-			dataType:'jsonp',
-			success:function(data){
-//					console.log(data);
-				$.each(data,function(i,e){
-//						console.log(i)//图片
-					const div = $('<div class="pic"></div>');
-					const img = $(`<img src="${e.preview}"/>`);
-					img[0].onload = function(){
-						let index = findMin();
-						div.append(img);
-						$('li').eq(index).append(div);
-					}
-				});
-			}
-		});
+		let onOff = true;
+		jiazai()
+		function jiazai(){
+			onOff = false;
+			$.ajax({
+				url:'http://www.wookmark.com/api/json/popular?page='+page+'&callback=?',
+				dataType:'jsonp',
+				success:function(data){
+	//					console.log(data);
+					$.each(data,function(i,e){
+	//						console.log(i)//图片
+						const div = $('<div class="pic"></div>');
+						const img = $(`<img src="${e.preview}"/>`);
+						img[0].onload = function(){
+							let index = findMin();
+							div.append(img);
+							$('li').eq(index).append(div);
+							onOff = true;
+						}
+					});
+				}
+			});
+		}
+		
 		
 		window.onscroll = function(){
-			console.log(minHeight(),document.documentElement.clientHeight);
 			if(minHeight()<document.documentElement.clientHeight){
 				console.log(1);
-//				page= page+1;
-//				$.ajax({
-//					url:'http://www.wookmark.com/api/json/popular?page=1&callback=?',
-//					dataType:'jsonp',
-//					success:function(data){
-//		//					console.log(data);
-//						$.each(data,function(i,e){
-//		//						console.log(i)//图片
-//							const div = $('<div class="pic"></div>');
-//							const img = $(`<img src="${e.preview}"/>`);
-//							img[0].onload = function(){
-//								let index = findMin();
-//								div.append(img);
-//								$('li').eq(index).append(div);
-//							}
-//						});
-//					}
-//				});
+				if(!onOff){
+					page++;
+					jiazai();
+				}
 			}
 		}
 		

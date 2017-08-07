@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" name="" id="" value="上一个" />
+	<input type="button" name="" id="" value="下一个" />
+	<div id="div"></div>
+	<script type="text/javascript">
+		const inputs = document.getElementsByTagName('input');
+		const div = document.getElementById('div');
+		var num = 0;
+		var arr = ['第一天','第二天','第三天','第四天'];
+		var obj = {};
+		div.innerHTML = arr[0];
+		inputs[0].onclick = function(){
+			history.go(-1);
+			num--;
+			if(num < 0 )num = 0;
+			obj.page = num;
+			div.innerHTML = arr[obj.page];
+		}
+		inputs[1].onclick = function(){
+			num++;
+			if(num > 3)num = 3;
+			obj.page = num;
+			history.pushState(obj,'','#page='+num);
+			div.innerHTML = arr[obj.page];
+		}
+//		window.onhashchange = function(){
+//			if(location.hash){
+//				div.innerHTML = arr[location.hash.split('#')[1].split('=')[1]*1]
+//			}
+//			
+//		}
+	</script>
+</body>
+</html>

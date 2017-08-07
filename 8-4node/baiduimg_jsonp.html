@@ -22,9 +22,8 @@
 	var btn = document.getElementById('btn');
 	
 	//listjson?&rn=30&ie=utf8&?tag1=明星&tag2=美女&pn=1
-	//http://image.baidu.com/channel/listjson?&rn=30&ie=utf8&tag1=明星&tag2=美女&pn=0
-	btn.onclick = function(){
-		
+	//http://image.baidu.com/channel/listjson?&rn=30&ie=utf8&tag1=明星&tag2=全部&pn=0
+	btn.onclick = function(){		
 		jsonp({
 			dataType:'jsonp',
 			url:'http://image.baidu.com/channel/listjson?&rn=30&ie=utf8&',

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title><style>
+    	body{
+    		background:skyblue;
+    	}
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      .pic{
+        width: 236px;
+        box-shadow:0 1px 3px rgba(0,0,0,.3);
+        overflow:hidden;
+        margin-top:10px;
+      }
+      img{
+        width:236px;
+        border: none;
+        display: block;
+      }
+      ul{
+        list-style: none;
+        margin: 0 auto;
+        /*border:1px solid #000;*/
+        /*overflow: hidden;*/
+        position: relative;
+      }
+      li{
+        position: absolute;
+        border: 1px solid #ccc;
+        width:236px;
+        transition: .5s;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="ul"></ul>
+	<script src="jquery-3.2.1.js"></script>
+	<script type="text/javascript">
+		var liW = 236;//每个li的宽度
+		var liMargin = 10;//每个li的margin
+		var innerW = $(window).innerWidth()+liMargin;//可视区的宽加上最后一个li的margin-right
+		var trueW = liW + liMargin;//实际li的站位宽度
+		//li的个数
+		var liNum = Math.floor(innerW / trueW); 
+		$('ul').width(trueW * liNum - liMargin);//ul的宽
+		var arrT = [];//用来存li的top值
+		var arrL = [];//用来存li的left值
+		for(var i=0;i<liNum;i++){
+			arrT.push(0);//每个li的top值
+			arrL.push(trueW * i);//每个li的left值
+		}
+		var num = 0;
+		findImg(num);
+		function findImg(num){
+			$.ajax({
+				dataType:'jsonp',
+				url:'http://www.wookmark.com/api/json/popular?callback=?',
+				data:{
+					page:num
+				},
+				success:function(data){
+//					console.log(data);
+					$.each(data,function(i,e){
+//						console.log(e);
+						let li = $('<li>');
+						//问题
+						let iH = (e.height*liW)/e.width; 
+						let img = $('<img src="'+e.preview+'" style="height:'+iH+'px;"/>')[0];
+						img.onload = function(){
+//							console.log(1)
+							li.append(img);
+							li.css({
+								left:arrL[fintMin()],
+								top:arrT[fintMin()]
+							});
+							
+							$('ul').append(li);
+							
+							arrT[fintMin()] += (iH+10);//问题
+						}
+					});
+//					
+				}
+			})
+		}
+		$(window).resize(function(){
+		console.log(1);
+			var innerW = $(window).innerWidth()+liMargin;//可视区的宽加上最后一个li的margin-right
+			var liNum = Math.floor(innerW / trueW); 
+			$('ul').width(trueW * liNum - liMargin);//ul的宽
+			arrT.length = arrL.length = 0;
+			for(var i=0;i<liNum;i++){
+				arrT.push(0);//每个li的top值
+				arrL.push(trueW * i);//每个li的left值
+			}
+			$('li').each(function(i,e){
+				$(e).css({
+					left:arrL[fintMin()],
+					top:arrT[fintMin()]
+				});
+				arrT[fintMin()] += ($(e).height()+10);
+			})
+			
+		})
+		//求最短的li
+		function fintMin(){
+			var n = 0;
+			n = Math.min.apply(null,arrT);
+			return arrT.findIndex(e=>e==n);
+		}
+	</script>
+</body>
+</html>
