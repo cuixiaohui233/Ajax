@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+		*{
+  margin: 0;
+  padding: 0;
+}
+ul{
+  margin: 10px;
+  list-style: none;
+  width:1000px;
+  overflow: hidden;
+}
+li{
+  width:128px;
+  float: left;
+  margin: 10px;
+  height: 250px;
+}
+p{
+  text-align: center;
+}
+p:nth-of-type(1){
+  font-weight: bold;
+}
+a{
+  padding:8px;
+  border: 1px solid #000;
+}
+#page{
+	width:auto;
+	height:60px;
+	position: relative;
+	bottom:100px;
+	left:400px;
+}
+#page span{
+	display: inline-block;
+	width:40px;
+	height:40px;
+	border:1px solid #000;
+	text-align: center;
+	line-height: 40px;
+	margin-right:10px;
+}
+#page span:hover{
+	background: darkred;
+}
+	</style>
+</head>
+<body>
+	<input type="text" id="txt" />
+	<input type="button" id="btn" value="搜索"/>
+	<div id="app"></div>
+<!--	//工具js-->
+	<script src="src/jquery-3.1.1.js" charset="utf-8"></script>
+	<script src="src/template.js" charset="utf-8"></script>
+	<!--//模板js-->
+	<script type="text/html" id="temp"></script>
+	<!--//mvc.js-->
+	<script type="text/javascript" src="js/M.js"></script>
+	<script type="text/javascript" src="js/V.js"></script>
+	<script type="text/javascript" src="js/C.js"></script>
+</body>
+</html>

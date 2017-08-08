@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>自己的localstorage1</title>
+</head>
+<body>
+	<button id="btn">点击保存数据</button>
+	<script type="text/javascript">
+		var btn = document.getElementById('btn');
+		var num = 0;
+		btn.onclick = function(){
+			num++;
+			localStorage.setItem('haha',num);
+		}
+		window.addEventListener('storage',function(){
+			console.log('数据存起来了');
+		})
+	</script>
+</body>
+</html>

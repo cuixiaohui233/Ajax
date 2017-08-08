@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<title>自己的localstorage2</title>
+	<style type="text/css">
+		#list{
+			width:500px;
+			height:50px;
+		}
+		#list li{
+			width:100px;
+			height:30px;
+			text-align: center;
+			list-style: none;
+			line-height: 30px;
+			border: 1px solid #000;
+			margin-right:10px;
+			float: left;
+			cursor: pointer;
+		}
+		#box{
+			width:200px;
+			height:200px;
+			margin-left:50px;
+		}
+	</style>
+</head>
+<body>
+	<ul id="list"></ul>
+	<div id="box"></div>
+	<script type="text/javascript">
+		var btn = document.getElementById('btn');
+		var list = document.getElementById('list');
+		var box = document.getElementById('box');
+		var arr = ['电影','图书','美食','歌曲'];
+		var obj = {
+			[''+arr[0]]:['战狼2','三三','建国大业','天使爱美丽','千与千寻'],
+			[''+arr[1]]:['解忧杂货店','简爱','冰与火之歌','他的国','诺森德的守望'],
+			[''+arr[2]]:['xx风','oo堡','..凌','xx翅','oo排'],
+			[''+arr[3]]:['冬天里的一把火','大风车','晴天','可惜我是水瓶座','野孩子']
+		}
+		var shuju = [];
+		//生成结构
+		var str = '';
+		arr.forEach(function(e,i){
+			str += `<li>${e}</li>`;
+		})
+		list.innerHTML = str;
+		var lis = document.getElementsByTagName('li');
+		lis = Array.from(lis);
+		lis.forEach(function(e){
+			e.onclick = function(){
+				if(!shuju.includes(this.innerHTML)){
+					shuju.push(this.innerHTML);
+					localStorage.setItem('haha',JSON.stringify(shuju));
+				}
+				show(this.innerHTML);
+				
+			}
+			
+		})
+		function show(str){
+			var html = '';
+			for(var attr in obj){
+				if(attr == str){
+					obj[attr].forEach(function(e){
+						html += `<p title="点击添加到购物车">${e}</p>`;
+					})
+					
+				}
+			}
+			box.innerHTML = html;
+		}
+		window.addEventListener('storage',function(){
+			console.log(1);
+		})
+	</script>
+</body>
+</html>
